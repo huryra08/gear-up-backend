@@ -1,0 +1,46 @@
+enum activeStatus {
+  ACTIVE
+  BLOCKED
+}
+
+enum Role {
+  CUSTOMER
+  PROVIDER
+  ADMIN
+}
+
+enum GearStatus {
+  AVAILABLE
+  RENTED
+  MAINTENANCE
+  UNAVAILABLE
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PICKED_UP
+  ONGOING
+  RETURNED
+  CANCELLED
+  OVERDUE
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentProvider {
+  STRIPE
+  SSLCOMMERZ
+}
+
+enum ReturnCondition {
+  GOOD
+  MINOR_DAMAGE
+  MAJOR_DAMAGE
+  LOST
+}

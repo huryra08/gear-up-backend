@@ -1,0 +1,1399 @@
+{
+  "info": {
+    "_postman_id": "a997d039-0f29-4abc-a181-4ea0666a8ff5",
+    "name": "GearUp API_12",
+    "description": "Complete Postman collection for GearUp - Sports & Outdoor Equipment Rental API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54831390",
+    "_collection_link": "https://go.postman.co/collection/54831390-a997d039-0f29-4abc-a181-4ea0666a8ff5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Customer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "  pm.collectionVariables.set('userId', res.data.id);",
+                  "  console.log('✅ Customer registered. ID:', res.data.id);",
+                  "} else {",
+                  "  console.log('❌ Registration failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Alex Rahman\",\n  \"email\": \"alex@example.com\",\n  \"password\": \"SecurePass123456\",\n  \"phone\": \"+8801700000000\",\n  \"role\": \"CUSTOMER\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register Provider",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "  console.log('✅ Provider registered. ID:', res.data.id);",
+                  "} else {",
+                  "  console.log('❌ Registration failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Trailhead Gear Co\",\n  \"email\": \"provider@example.com\",\n  \"password\": \"SecurePass123\",\n  \"phone\": \"+8801800000000\",\n  \"role\": \"PROVIDER\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Customer",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.accessToken) {",
+                  "  pm.collectionVariables.set('customerToken', res.data.accessToken);",
+                  "  console.log('✅ Customer token saved automatically.');",
+                  "} else {",
+                  "  console.log('❌ Login failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"huryra11@example.com\",\n  \"password\": \"SecurePass123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Provider",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"trailhead@example.com\",\n  \"password\": \"SecurePass123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Admin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.accessToken) {",
+                  "  pm.collectionVariables.set('adminToken', res.data.accessToken);",
+                  "  console.log('✅ Admin token saved automatically.');",
+                  "} else {",
+                  "  console.log('❌ Login failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"huryra@example.com\",\n  \"password\": \"SecurePass123456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer "
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/auth/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:6000/api/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Category (Admin Only)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "  pm.collectionVariables.set('categoryId', res.data.id);",
+                  "  console.log('✅ Category ID saved:', res.data.id);",
+                  "} else {",
+                  "  console.log('❌ Category creation failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Camping\",\n  \"description\": \"Tents, sleeping bags, and all camping essentials\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/categories",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "categories"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Gear (Public)",
+      "item": [
+        {
+          "name": "Get All Gear",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/gear",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "gear"
+              ],
+              "query": [
+                {
+                  "key": "searchTerm",
+                  "value": "tent",
+                  "disabled": true
+                },
+                {
+                  "key": "category",
+                  "value": "{{categoryId}}",
+                  "disabled": true
+                },
+                {
+                  "key": "brand",
+                  "value": "Coleman",
+                  "disabled": true
+                },
+                {
+                  "key": "minPrice",
+                  "value": "10",
+                  "disabled": true
+                },
+                {
+                  "key": "maxPrice",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "AVAILABLE",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Gear By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:6000/api/gear/59268072-1c77-427a-a0a3-c04cfdd314c3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "gear",
+                "59268072-1c77-427a-a0a3-c04cfdd314c3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Provider Management",
+      "item": [
+        {
+          "name": "Add Gear to Inventory",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "  pm.collectionVariables.set('gearId', res.data.id);",
+                  "  console.log('✅ Gear ID saved:', res.data.id);",
+                  "} else {",
+                  "  console.log('❌ Gear creation failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Climbing Helmet\",\n  \"description\": \"Lightweight protective helmet for rock climbing and mountaineering.\",\n  \"brand\": \"Petzl\",\n  \"images\": [\"https://example.com/helmet1.jpg\"],\n  \"specifications\": {\n    \"weight\": \"350g\",\n    \"material\": \"ABS shell\",\n    \"sizeRange\": \"52–62cm\"\n  },\n  \"pricePerDay\": 12.00,\n  \"quantity\": 8,\n  \"categoryId\": \"ae2261a5-7f7e-4762-a2f2-51a5a904cbe5\"\n}\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/gear",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "gear"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Gear Listing",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"pricePerDay\": 30.00,\n  \"quantity\": 5,\n  \"description\": \"Updated: Waterproof dome tent, fits 4 adults comfortably with extra headroom.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/gear/59268072-1c77-427a-a0a3-c04cfdd314c3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "gear",
+                "59268072-1c77-427a-a0a3-c04cfdd314c3"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Gear from Inventory",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/provider/gear/f8724b38-3502-4c39-8c06-e61672ce715b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "gear",
+                "f8724b38-3502-4c39-8c06-e61672ce715b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Provider Incoming Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{json_web_token_03kg}}",
+                "description": "providerToken"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/provider/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status - CONFIRMED",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"CONFIRMED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/orders/a9178b4c-49c0-457a-bb90-5dbc453b624b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "orders",
+                "a9178b4c-49c0-457a-bb90-5dbc453b624b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status - PICKED_UP",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"PICKED_UP\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/orders/a9178b4c-49c0-457a-bb90-5dbc453b624b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "orders",
+                "a9178b4c-49c0-457a-bb90-5dbc453b624b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status - ONGOING",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"ONGOING\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/orders/a9178b4c-49c0-457a-bb90-5dbc453b624b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "orders",
+                "a9178b4c-49c0-457a-bb90-5dbc453b624b"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status - RETURNED",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"RETURNED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/orders/ba33024f-e248-4377-ae4c-09d739ab9bcf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "orders",
+                "ba33024f-e248-4377-ae4c-09d739ab9bcf"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order Status - CANCELLED",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{providerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"CANCELLED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/provider/orders/ba33024f-e248-4377-ae4c-09d739ab9bcf",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "provider",
+                "orders",
+                "ba33024f-e248-4377-ae4c-09d739ab9bcf"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Rental Orders",
+      "item": [
+        {
+          "name": "Create Rental Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const res = pm.response.json();",
+                  "if (res.success && res.data && res.data.id) {",
+                  "  pm.collectionVariables.set('rentalOrderId', res.data.id);",
+                  "  console.log('✅ Rental Order ID saved:', res.data.id);",
+                  "  console.log('Total Amount:', res.data.totalAmount);",
+                  "} else {",
+                  "  console.log('❌ Rental creation failed:', JSON.stringify(res));",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startDate\": \"2026-07-15\",\n  \"endDate\": \"2026-07-18\",\n  \"items\": [\n    {\n      \"gearId\": \"59268072-1c77-427a-a0a3-c04cfdd314c3\",\n      \"quantity\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/rentals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Rental Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{json_web_token_0itp}}",
+                "description": "customerToken"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/rentals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Rental Order By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/rentals/{{rentalOrderId}}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "rentals",
+                "{{rentalOrderId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "Create Payment Session (SSLCommerz)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rentalOrderId\": \"565e5724-3118-4e2b-8d0f-e99d51244c3a\",\n  \"provider\": \"SSLCOMMERZ\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/payments/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "payments",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Payment - COMPLETED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"TXN-MRNKIBE5-VLQCP5K\",\n  \"status\": \"COMPLETED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/payments/confirm",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "payments",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Confirm Payment - FAILED",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"{{transactionId}}\",\n  \"status\": \"FAILED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/payments/confirm",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "payments",
+                "confirm"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Payment History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}",
+                "description": "customerToken"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/payments",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "payments"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Create Review (after RETURNED)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{customerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"gearId\": \"565e5724-3118-4e2b-8d0f-e99d51244c3a\",\n  \"rentalOrderId\": \"565e5724-3118-4e2b-8d0f-e99d51244c3a\",\n  \"rating\": 5,\n  \"comment\": \"Great tent, kept us dry the whole trip! Easy to set up and pack down.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/reviews",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "reviews"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Reviews For Gear",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/reviews/gear/{{gearId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reviews",
+                "gear",
+                "{{gearId}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/admin/users?role=CUSTOMER&searchTerm=",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "admin",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "role",
+                  "value": "CUSTOMER"
+                },
+                {
+                  "key": "searchTerm",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Suspend User (BLOCKED)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activeStatus\": \"BLOCKED\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/admin/users/50570d63-1796-47bf-976e-26ce27e0042c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "admin",
+                "users",
+                "50570d63-1796-47bf-976e-26ce27e0042c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Activate User (ACTIVE)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activeStatus\": \"ACTIVE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:6000/api/admin/users/50570d63-1796-47bf-976e-26ce27e0042c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "admin",
+                "users",
+                "50570d63-1796-47bf-976e-26ce27e0042c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Gear (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/admin/gear",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "admin",
+                "gear"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Rentals (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/admin/rentals",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "admin",
+                "rentals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Dashboard Stats (Admin)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:6000/api/admin/stats",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "6000",
+              "path": [
+                "api",
+                "admin",
+                "stats"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:6000/api"
+    },
+    {
+      "key": "customerToken",
+      "value": ""
+    },
+    {
+      "key": "providerToken",
+      "value": ""
+    },
+    {
+      "key": "adminToken",
+      "value": ""
+    },
+    {
+      "key": "categoryId",
+      "value": ""
+    },
+    {
+      "key": "gearId",
+      "value": ""
+    },
+    {
+      "key": "rentalOrderId",
+      "value": ""
+    },
+    {
+      "key": "paymentId",
+      "value": ""
+    },
+    {
+      "key": "transactionId",
+      "value": ""
+    },
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "json_web_token_03kg",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0rju",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0itp",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_0mbr",
+      "secret": true
+    },
+    {
+      "key": "bearer_token_13vg",
+      "secret": true
+    },
+    {
+      "key": "supabase_service_role_api_key_0h5r",
+      "secret": true
+    }
+  ]
+}
