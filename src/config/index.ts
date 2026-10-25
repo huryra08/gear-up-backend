@@ -12,6 +12,7 @@ export default {
     jwt_refresh_secret: process.env.JWT_REFRESH_SECRET!,
     jwt_access_expires_in: process.env.JWT_ACCESS_EXPIRATION_IN!,
     jwt_refresh_expires_in: process.env.JWT_REFRESH_EXPIRATION_IN!,
+    google_client_id: process.env.GOOGLE_CLIENT_ID,
 
     stripe_secret_key: process.env.STRIPE_SECRET_KEY,
     stripe_product_key : process.env.STRIPE_PRODUCT_ID,
@@ -20,6 +21,6 @@ export default {
     sslcommerz_store_id: process.env.SSLCOMMERZ_STORE_ID,
     sslcommerz_store_password: process.env.SSLCOMMERZ_STORE_PASSWORD,
     sslcommerz_is_live: process.env.SSLCOMMERZ_IS_LIVE === "true",
-        ai_api_key: process.env.AI_API_KEY,
+    ai_api_key: process.env.AI_API_KEY,
     ai_model: process.env.AI_MODEL || "claude-sonnet-5-5",
 }

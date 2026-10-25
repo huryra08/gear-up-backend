@@ -17,17 +17,10 @@ const register = catchAsync(async (req: Request, res:Response ,next :NextFunctio
     });
 });
 
-const login = catchAsync(async (req: Request, res:Response ,next :NextFunction) => {
+const login = catchAsync(async (req: Request, res:Response) => {
     const result = await authService.loginUser(req.body);
 
-    res.cookie("accessToken", result.accessToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-    });
-    res.cookie("refreshToken", result.refreshToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-    });
+    setAuthCookies(res, result);
 
     sendResponse(res, {
         success: true,
@@ -36,8 +29,35 @@ const login = catchAsync(async (req: Request, res:Response ,next :NextFunction) 
         data: result,
     });
 });
-``
-const getMe = catchAsync(async (req: Request, res:Response ,next :NextFunction) => {
+
+const googleLogin = catchAsync(async (req: Request, res: Response) => {
+    const result = await authService.googleLogin(req.body);
+
+    setAuthCookies(res, result);
+
+    sendResponse(res, {
+        success: true,
+        statusCode: httpStatus.OK,
+        message: "Logged in with Google successfully",
+        data: result,
+    });
+});
+
+const setAuthCookies = (
+    res: Response,
+    result: { accessToken: string; refreshToken: string }
+) => {
+    res.cookie("accessToken", result.accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+    });
+    res.cookie("refreshToken", result.refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+    });
+};
+
+const getMe = catchAsync(async (req: Request, res:Response) => {
     const result = await authService.getMe(req.user!.id);
 
     sendResponse(res, {
@@ -51,5 +71,6 @@ const getMe = catchAsync(async (req: Request, res:Response ,next :NextFunction) 
 export const authController = {
     register,
     login,
+    googleLogin,
     getMe,
 };

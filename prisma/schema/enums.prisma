@@ -44,3 +44,9 @@ enum ReturnCondition {
   MAJOR_DAMAGE
   LOST
 }
+
+
+enum AuthProvider {
+LOCAL
+GOOGLE
+}
